@@ -1,11 +1,33 @@
-﻿angular.module('OwnersPage',  ['ngSanitize'])
-.controller('OwnersPageController', ['$scope', '$http', function ($scope, $http) {
+﻿angular.module('Owners',  ['ngSanitize'])
+.controller('OwnersController', ['$scope', '$http', function ($scope, $http) {
     var defaultItemsCountOnPage = 3;
     $scope.currentPage = 0;
 
     $scope.paginationItem_OnClick = function(pageNumber) {
        $scope.currentPage = pageNumber-1;
     };
+
+    $scope.ownerDelete_OnClick = function(ownerId) {
+        var requestBody = {
+            ownerId : ownerId
+        };
+        
+        $http.post('api/Owners/Delete', requestBody)
+        .then(function(response) {
+            getOwnersList();
+        });
+    }
+
+    $scope.ownerCreate_OnClick = function(ownerName) {
+        var requestBody = {
+            ownerName : ownerName
+        };
+
+        $http.post('api/Owners/Create', requestBody)
+         .then(function(response) {
+            getOwnersList();
+        });
+    }
 
     var getOwnersList = function () {
         $http({

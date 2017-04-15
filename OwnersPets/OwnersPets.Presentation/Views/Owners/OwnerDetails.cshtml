@@ -1,17 +1,27 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Owners Pets</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/Scripts/Pages/index.js"></script>
-    <link href="~/Content/common.css" rel="stylesheet" />
+    <title>Owners Pets - Details</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet"/>
+    <link href="~/Content/common.css" rel="stylesheet"/>
+    <script src="~/Scripts/Pages/owner-details.js"></script>
+    <script type="text/javascript">
+        this.ownerId = @ViewData["ownerId"];
+    </script>
 </head>
-<body ng-app="Owners" ng-controller="OwnersController">
+<body ng-app="OwnerDetails" ng-controller="OwnerDetailsController">
     <div class="index-header">
         <div class="row">
             <div class="col-md-12">
-                <h1 align="center">All Users</h1>
+                <h1 align="center">{{ OwnerDetails.OwnerName }}'s pets</h1>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <a href="../../">Back to all Users</a>
+            </div>
+            <div class="col-md-3"></div>
         </div>
     </div>
     <div class="index-body">
@@ -19,10 +29,10 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-3">
-                    <input type="text" class="form-control" id="owner_name_input" placeholder="Enter Pet Owner's Name" ng-model="petNameModel"/>
+                    <input type="text" class="form-control" id="pet_name_input" placeholder="Enter Pet's Name" ng-model="petNameModel"/>
                 </div>
                 <div class="col-md-1">
-                    <button type="button" class="btn btn-primary" ng-click="ownerCreate_OnClick(petNameModel)">Add</button>
+                    <button type="button" class="btn btn-primary" ng-click="petCreate_OnClick(petNameModel)">Add</button>
                 </div>
                 <div class="col-md-4"></div>
             </div>
@@ -33,24 +43,22 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <div class="row">
-                        Total count: {{ OwnersList.length }}
+                        Total count: {{ OwnerDetails.Pets.length }}
                     </div>
                     <div class="row">
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Pets Count</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="owner in Pages[currentPage].Items">
-                                    <td width="50%"><a href="Owners/{{ owner.OwnerId }}">{{ owner.Name }}</a></td>
-                                    <td width="50%">
+                                <tr ng-repeat="pet in Pages[currentPage].Items">
+                                    <td>
                                         <div class="row">
-                                            <div class="col-md-8">{{ owner.PetsCount }}</div>
+                                            <div class="col-md-8">{{ pet.PetName }}</div>
                                             <div class="col-md-4" align="right">
-                                                <button type="button" class="btn btn-default" ng-click="ownerDelete_OnClick(owner.OwnerId)">Delete</button>
+                                                <button type="button" class="btn btn-default" ng-click="petDelete_OnClick(pet.PetId)">Delete</button>
                                             </div>
                                         </div>
                                     </td>
@@ -60,7 +68,9 @@
                     </div>
                     <div class="row" align="center">
                         <span ng-repeat="page in Pages">
-                            <span class="pagination-item" ng-click="paginationItem_OnClick(page.Number);">{{ $index + 1 }} </span>
+                            <span class="pagination-item" ng-click="paginationItem_OnClick(page.Number);">
+                                {{ page.Number }}
+                            </span>
                         </span>
                     </div>
                 </div>

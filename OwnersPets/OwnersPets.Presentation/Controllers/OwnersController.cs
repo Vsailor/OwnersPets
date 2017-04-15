@@ -1,32 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Web.Http;
-using OwnersPets.Model;
-using OwnersPets.Presentation.Service.Abstract;
+﻿using System.Web.Mvc;
 
 namespace OwnersPets.Presentation.Controllers
 {
-    [RoutePrefix("api/Owners")]
-    public class OwnersController : ApiController
+    [RoutePrefix("Owners")]
+    public class OwnersController : Controller
     {
-        private readonly IOwnersPresentationService _ownersPresentationService;
-
-        public OwnersController(IOwnersPresentationService ownersPresentationService)
-        {
-            _ownersPresentationService = ownersPresentationService;
-        }
-
-        [HttpGet]
-        public async Task<IEnumerable<OwnerBasicInfo>> GetAll()
-        {
-            return await _ownersPresentationService.GetAllOwners();
-        }
-
-        [HttpGet]
         [Route("{ownerId}")]
-        public async Task<OwnerDetailedInfo> GetOwnerDetails([FromUri] int ownerId)
+        public ActionResult Index(int ownerId)
         {
-            return await _ownersPresentationService.GetOwnerDetailsById(ownerId);
+            ViewData["ownerId"] = ownerId;
+            return View("OwnerDetails");
         }
     }
 }

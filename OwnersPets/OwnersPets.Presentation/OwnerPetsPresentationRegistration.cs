@@ -11,7 +11,9 @@ namespace OwnersPets.Presentation
         public static void Register(UnityContainer container)
         {
             container.RegisterType<IOwnersPresentationService, OwnersPresentationService>();
+            container.RegisterType<IPetsPresentationService, PetsPresentationService>();
             container.RegisterType<IOwnersService, OwnersService>();
+            container.RegisterType<IPetsService, PetsService>();
         }
     }
 }

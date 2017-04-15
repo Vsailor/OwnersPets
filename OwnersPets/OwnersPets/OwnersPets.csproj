@@ -57,12 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IOwnersService.cs" />
+    <Compile Include="Abstract\IPetsService.cs" />
     <Compile Include="Model\OwnerBasicInfo.cs" />
     <Compile Include="Model\OwnerDetailedInfo.cs" />
     <Compile Include="Model\PetBasicInfo.cs" />
     <Compile Include="OwnersPetsRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\OwnersService.cs" />
+    <Compile Include="Service\PetsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OwnersPets.Data\OwnersPets.Data.csproj">

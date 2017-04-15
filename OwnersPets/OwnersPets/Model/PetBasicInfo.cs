@@ -1,4 +1,6 @@
-﻿namespace OwnersPets.Model
+﻿using OwnersPets.Abstract;
+
+namespace OwnersPets.Model
 {
     public class PetBasicInfo
     {

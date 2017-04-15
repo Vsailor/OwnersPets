@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using OwnersPets.Model;
+using OwnersPets.Presentation.Models;
 
 namespace OwnersPets.Presentation.Service.Abstract
 {
@@ -8,5 +9,9 @@ namespace OwnersPets.Presentation.Service.Abstract
         Task<OwnerBasicInfo[]> GetAllOwners();
 
         Task<OwnerDetailedInfo> GetOwnerDetailsById(int id);
+
+        Task DeleteOwner(DeleteOwnerRequest request);
+
+        Task CreateOwner(CreateOwnerRequest request);
     }
 }
