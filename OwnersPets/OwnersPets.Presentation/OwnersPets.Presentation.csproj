@@ -217,7 +217,9 @@
     <Compile Include="Service\PetsPresentationService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -240,6 +242,10 @@
     <ProjectReference Include="..\OwnersPets\OwnersPets.csproj">
       <Project>{F0F3BC4E-5CC3-47ED-9367-2AC41240E5CD}</Project>
       <Name>OwnersPets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StorageModel\StorageModel.csproj">
+      <Project>{A6909FD2-154D-4A7D-8AD1-FB73444AFCC5}</Project>
+      <Name>StorageModel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

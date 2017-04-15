@@ -3,6 +3,7 @@ using System.Web.Routing;
 using Microsoft.Practices.Unity;
 using OwnersPets.Data;
 using Unity.WebApi;
+using StorageModel.Data;
 
 namespace OwnersPets.Presentation
 {
@@ -24,6 +25,7 @@ namespace OwnersPets.Presentation
             OwnerPetsDataRegistration.Register(container);
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
+            MigrationAdapter.CreateIfNotExistsDatabase();
         }
     }
 }
