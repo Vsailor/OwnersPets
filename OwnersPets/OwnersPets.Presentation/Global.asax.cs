@@ -25,7 +25,7 @@ namespace OwnersPets.Presentation
             OwnerPetsDataRegistration.Register(container);
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
-            MigrationAdapter.CreateIfNotExistsDatabase();
+            SimpleConnectionAdapter.CreateIfNotExistsDatabase();
         }
     }
 }

@@ -71,6 +71,10 @@
       <Project>{CE3B615F-87A2-4747-B5DA-3862D4E61609}</Project>
       <Name>OwnersPets.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StorageModel\StorageModel.csproj">
+      <Project>{a6909fd2-154d-4a7d-8ad1-fb73444afcc5}</Project>
+      <Name>StorageModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

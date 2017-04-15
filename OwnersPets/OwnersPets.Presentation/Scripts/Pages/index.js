@@ -53,7 +53,6 @@
             }
 
             var page = {
-                Number : pageNumber,
                 Items : itemsOnPage
             };
 

@@ -12,8 +12,6 @@ namespace OwnersPets.Presentation
         {
             container.RegisterType<IOwnersPresentationService, OwnersPresentationService>();
             container.RegisterType<IPetsPresentationService, PetsPresentationService>();
-            container.RegisterType<IOwnersService, OwnersService>();
-            container.RegisterType<IPetsService, PetsService>();
         }
     }
 }

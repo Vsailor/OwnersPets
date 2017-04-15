@@ -38,11 +38,11 @@
             return response.data;
         }).then(function (response) {
             $scope.OwnerDetails = response;
-            $scope.Pages = splitOwnersListToPages(response.Pets);
+            $scope.Pages = splitPetsListToPages(response.Pets);
         });
     };
 
-    var splitOwnersListToPages = function (items) {
+    var splitPetsListToPages = function (items) {
         // pages generation
         var result = [];
         for (var i = 0, pageNumber = 1; i < items.length; i += defaultItemsCountOnPage, pageNumber++) {

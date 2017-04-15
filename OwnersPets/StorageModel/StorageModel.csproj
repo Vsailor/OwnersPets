@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\MigrationAdapter.cs" />
+    <Compile Include="Data\SimpleConnectionAdapter.cs" />
     <Compile Include="Data\Sql\MigrationQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

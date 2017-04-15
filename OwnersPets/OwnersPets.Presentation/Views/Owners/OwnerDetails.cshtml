@@ -68,8 +68,8 @@
                     </div>
                     <div class="row" align="center">
                         <span ng-repeat="page in Pages">
-                            <span class="pagination-item" ng-click="paginationItem_OnClick(page.Number);">
-                                {{ page.Number }}
+                            <span class="pagination-item" ng-click="paginationItem_OnClick($index + 1);">
+                                {{ $index + 1 }}
                             </span>
                         </span>
                     </div>

@@ -1,46 +1,58 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using OwnersPets.Abstract;
+using OwnersPets.Data.Abstract;
+using OwnersPets.Data.Models;
 using OwnersPets.Model;
 
 namespace OwnersPets.Service
 {
     public class OwnersService : IOwnersService
     {
+        private readonly IOwnersRepository _ownersRepository;
+        private readonly IPetsRepository _petsRepository;
+
+        public OwnersService(
+            IOwnersRepository ownersRepository,
+            IPetsRepository petsRepository)
+        {
+            _ownersRepository = ownersRepository;
+            _petsRepository = petsRepository;
+        }
+
         public async Task<OwnerBasicInfo[]> GetAllOwnersBasicInfo()
         {
-            return await Task.Run(() =>
-            {
-                return new[]
+            GetAllOwnerBasicInfoResult[] basicInfoResult = await _ownersRepository.GetAllOwnersBasicInfo();
+            return basicInfoResult.Select(b => 
+                new OwnerBasicInfo
                 {
-                    new OwnerBasicInfo { Name = "Bob", PetsCount = 10, OwnerId = 1 },
-                    new OwnerBasicInfo { OwnerId = 2, Name = "Simpsons", PetsCount = 20 },
-                    new OwnerBasicInfo { OwnerId = 3, Name = "Michael", PetsCount = 30 },
-                    new OwnerBasicInfo { OwnerId = 4, Name = "Mark", PetsCount = 3 },
-                    new OwnerBasicInfo { OwnerId = 5, Name = "Andrew", PetsCount = 12 },
-                    new OwnerBasicInfo { OwnerId = 6, Name = "Thomas", PetsCount = 15 },
-                    new OwnerBasicInfo { OwnerId = 7, Name = "Martin", PetsCount = 5 },
-                    new OwnerBasicInfo { OwnerId = 8, Name = "Batman", PetsCount = 7 },
-                };
-            });
+                    OwnerId = b.OwnerId,
+                    PetsCount = b.PetsCount,
+                    Name = b.Name
+                }).ToArray();
         }
 
         public async Task<OwnerDetailedInfo> GetOwnerDetails(int ownerId)
         {
-            return await Task.Run(() =>
+            GetOwnerByOwnerIdResult owner = await _ownersRepository.GetOwnerDetailedInfo(ownerId);
+            if (owner == null)
             {
-                return new OwnerDetailedInfo
-                {
-                    OwnerName = "Martin",
-                    Pets = new []
-                    {
-                        new PetBasicInfo
-                        {
-                            PetId = 1,
-                            PetName = "Barsic"
-                        }
-                    }
-                };
-            });
+                throw new ArgumentException($"Owner <{ownerId}> not found");
+            }
+
+            GetPetsByOwnerIdResult[] pets = await _petsRepository.GetPetsByOwnerId(ownerId);
+            return new OwnerDetailedInfo
+            {
+                OwnerId = owner.OwnerId,
+                OwnerName = owner.Name,
+                Pets = pets.Select(p => 
+                            new PetBasicInfo
+                            {
+                                PetId = p.PetId,
+                                PetName = p.Name
+                            })
+            };
         }
 
         public async Task DeleteOwner(int ownerId)

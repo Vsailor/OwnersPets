@@ -2,7 +2,7 @@
 {
     internal class MigrationQuery
     {
-        internal static string CreateDatabase
+        public static string CreateDatabase
         {
             get
             {
@@ -23,94 +23,94 @@
             }
         }
 
-        internal static string SeedData
+        public static string SeedData
         {
             get
             {
                 return @"
-                    INSERT INTO [Owner] (Name)
-                    VALUES ('Bob');
+                    INSERT INTO [Owner] (OwnerId, Name)
+                    VALUES (0, 'Bob');
 
-                    INSERT INTO [Owner] (Name)
-                    VALUES ('Simpson');
+                    INSERT INTO [Owner] (OwnerId, Name)
+                    VALUES (1, 'Simpson');
 
-                    INSERT INTO [Owner] (Name)
-                    VALUES ('Michael');
+                    INSERT INTO [Owner] (OwnerId, Name)
+                    VALUES (2, 'Michael');
 
-                    INSERT INTO [Owner] (Name)
-                    VALUES ('Thomas');
+                    INSERT INTO [Owner] (OwnerId, Name)
+                    VALUES (3, 'Thomas');
 
-                    INSERT INTO [Owner] (Name)
-                    VALUES ('Martin');
+                    INSERT INTO [Owner] (OwnerId, Name)
+                    VALUES (4, 'Martin');
 
-                    INSERT INTO [Owner] (Name)
-                    VALUES ('Diana');
+                    INSERT INTO [Owner] (OwnerId, Name)
+                    VALUES (5, 'Diana');
 
-                    INSERT INTO [Owner] (Name)
-                    VALUES ('Lili');
+                    INSERT INTO [Owner] (OwnerId, Name)
+                    VALUES (6, 'Lili');
 
-                    INSERT INTO [Owner] (Name)
-                    VALUES ('Chris');
+                    INSERT INTO [Owner] (OwnerId, Name)
+                    VALUES (7, 'Chris');
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Snowball', 0);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (0, 'Snowball', 0);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Pet', 0);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (1, 'Pet', 0);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Bulf', 0);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (2, 'Bulf', 0);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Rock', 0);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (3, 'Rock', 0);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Luna', 1);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (4, 'Luna', 1);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Han', 1);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (5, 'Han', 1);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Wolf', 1);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (6, 'Wolf', 1);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Doll', 1);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (7, 'Doll', 1);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Lap', 2);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (8, 'Lap', 2);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Stone', 2);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (9, 'Stone', 2);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Rap', 2);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (10, 'Rap', 2);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Crud', 2);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (11, 'Crud', 2);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Tom', 3);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (12, 'Tom', 3);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('West', 3);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (13, 'West', 3);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Hit', 3);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (14, 'Hit', 3);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Stack', 3);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (15, 'Stack', 3);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Bim', 4);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (16, 'Bim', 4);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Rex', 4);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (17, 'Rex', 4);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('Snake', 4);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (18, 'Snake', 4);
 
-                    INSERT INTO [Pet] (Name, OwnerId)
-                    VALUES ('June', 4);
+                    INSERT INTO [Pet] (PetId, Name, OwnerId)
+                    VALUES (19, 'June', 4);
                 ";
             }
         }
