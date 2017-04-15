@@ -8,7 +8,6 @@ namespace OwnersPets.Data
     {
         public static void Register(UnityContainer container)
         {
-            container.RegisterType<IOwnersRepository, OwnersRepository>();
         }
     }
 }

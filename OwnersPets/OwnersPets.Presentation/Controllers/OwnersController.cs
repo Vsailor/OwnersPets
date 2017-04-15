@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using OwnersPets.Model;
@@ -21,10 +17,16 @@ namespace OwnersPets.Presentation.Controllers
         }
 
         [HttpGet]
-        [Route("")]
-        public async Task<IEnumerable<Owner>> GetAll()
+        public async Task<IEnumerable<OwnerBasicInfo>> GetAll()
         {
             return await _ownersPresentationService.GetAllOwners();
+        }
+
+        [HttpGet]
+        [Route("{ownerId}")]
+        public async Task<OwnerDetailedInfo> GetOwnerDetails([FromUri] int ownerId)
+        {
+            return await _ownersPresentationService.GetOwnerDetailsById(ownerId);
         }
     }
 }

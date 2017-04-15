@@ -5,6 +5,8 @@ namespace OwnersPets.Presentation.Service.Abstract
 {
     public interface IOwnersPresentationService
     {
-        Task<Owner[]> GetAllOwners();
+        Task<OwnerBasicInfo[]> GetAllOwners();
+
+        Task<OwnerDetailedInfo> GetOwnerDetailsById(int id);
     }
 }

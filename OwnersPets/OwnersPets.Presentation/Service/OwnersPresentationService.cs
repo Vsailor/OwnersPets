@@ -14,9 +14,14 @@ namespace OwnersPets.Presentation.Service
             _ownersService = ownersService;
         }
 
-        public async Task<Owner[]> GetAllOwners()
+        public async Task<OwnerBasicInfo[]> GetAllOwners()
         {
-            return await _ownersService.GetAllOwners();
+            return await _ownersService.GetAllOwnersBasicInfo();
+        }
+
+        public async Task<OwnerDetailedInfo> GetOwnerDetailsById(int id)
+        {
+            return await _ownersService.GetOwnerDetails(id);
         }
     }
 }

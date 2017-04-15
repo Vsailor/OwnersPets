@@ -1,6 +1,8 @@
 ﻿using Microsoft.Practices.Unity;
+using OwnersPets.Abstract;
 using OwnersPets.Presentation.Service;
 using OwnersPets.Presentation.Service.Abstract;
+using OwnersPets.Service;
 
 namespace OwnersPets.Presentation
 {
@@ -9,6 +11,7 @@ namespace OwnersPets.Presentation
         public static void Register(UnityContainer container)
         {
             container.RegisterType<IOwnersPresentationService, OwnersPresentationService>();
+            container.RegisterType<IOwnersService, OwnersService>();
         }
     }
 }

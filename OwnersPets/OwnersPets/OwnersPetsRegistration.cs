@@ -1,6 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
-using OwnersPets.Abstract;
-using OwnersPets.Service;
+using OwnersPets.Data.Abstract;
+using OwnersPets.Data.Repository;
 
 namespace OwnersPets
 {
@@ -8,7 +8,7 @@ namespace OwnersPets
     {
         public static void Register(UnityContainer container)
         {
-            container.RegisterType<IOwnersService, OwnersService>();
+            container.RegisterType<IOwnersRepository, OwnersRepository>();
         }
     }
 }
