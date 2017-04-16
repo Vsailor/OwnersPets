@@ -44,20 +44,5 @@ namespace StorageModel.Data
                 conn.Execute(MigrationQuery.SeedData);
             }
         }
-
-        public static void Main(string[] args)
-        {
-            CreateIfNotExistsDatabase();
-            while (true)
-            {
-                string qu = @"SELECT RowId, Name, OwnerId FROM Pet";
-                using (SQLiteConnection conn = SimpleDbConnection())
-                {
-                    conn.Open();
-                    dynamic c = conn.Query<dynamic>(qu);
-                }
-            }
-
-        }
     }
 }
