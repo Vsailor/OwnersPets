@@ -5,3 +5,7 @@
 .pagination-item {
 	cursor: pointer;
 }
+
+.sortDirectionArrow {
+	cursor: pointer;
+}

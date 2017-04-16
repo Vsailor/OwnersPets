@@ -2,9 +2,21 @@
 .controller('OwnersController', ['$scope', '$http', function ($scope, $http) {
     var defaultItemsCountOnPage = 3;
     $scope.currentPage = 0;
+    $scope.sortDirection = 'top';
 
     $scope.paginationItem_OnClick = function(pageNumber) {
        $scope.currentPage = pageNumber-1;
+    };
+
+    $scope.sortDirection_OnClick = function() {
+        if ($scope.sortDirection == 'top') {
+            $scope.sortDirection = 'bottom';
+        } 
+        else {
+            $scope.sortDirection = 'top';
+        }
+
+        sortOwnerList($scope.sortDirection);
     };
 
     $scope.ownerDelete_OnClick = function(ownerId) {
@@ -43,6 +55,21 @@
             $scope.Pages = splitOwnersListToPages(response);
         });
     };
+
+    var sortOwnerList = function(sortDirection) {
+        var sortCoef = 1;
+        if (sortDirection == 'bottom') {
+            sortCoef = -1;
+        }
+
+        $scope.OwnersList.sort(function(a, b){
+            if(a.Name < b.Name) return -1*sortCoef;
+            if(a.Name > b.Name) return sortCoef;
+            return 0;
+        });
+
+        $scope.Pages = splitOwnersListToPages($scope.OwnersList);
+    }
 
     var splitOwnersListToPages = function(ownersList) {
         // pages generation

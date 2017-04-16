@@ -39,13 +39,23 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                Name
+                                            </div>
+                                            <div class="col-md-2 glyphicon glyphicon-triangle-{{sortDirection}} sortDirectionArrow" align="right" ng-click="sortDirection_OnClick()">
+                                            </div>
+                                        </div>
+                                    </th>
                                     <th>Pets Count</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="owner in Pages[currentPage].Items">
-                                    <td width="50%"><a href="Owners/{{ owner.OwnerId }}">{{ owner.Name }}</a></td>
+                                    <td width="50%">
+                                        <a href="Owners/{{ owner.OwnerId }}">{{ owner.Name }}</a>
+                                    </td>
                                     <td width="50%">
                                         <div class="row">
                                             <div class="col-md-8">{{ owner.PetsCount }}</div>

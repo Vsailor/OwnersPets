@@ -9,6 +9,9 @@ namespace StorageModel.Data
 {
     public class SimpleConnectionAdapter
     {
+        /// <summary>
+        /// Full database file path
+        /// </summary>
         public static string DatabaseFile
         {
             get
@@ -25,11 +28,18 @@ namespace StorageModel.Data
             }
         }
 
+        /// <summary>
+        /// Creates SQLiteConnection object with connection string
+        /// </summary>
+        /// <returns>SQLiteConnection instance</returns>
         public static SQLiteConnection SimpleDbConnection()
         {
             return new SQLiteConnection("Data Source=" + DatabaseFile);
         }
 
+        /// <summary>
+        /// Creates database and seeds data for testing
+        /// </summary>
         public static void CreateIfNotExistsDatabase()
         {
             if (File.Exists(DatabaseFile))

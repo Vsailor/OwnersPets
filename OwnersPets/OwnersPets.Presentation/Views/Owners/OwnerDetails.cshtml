@@ -48,9 +48,15 @@
                     <div class="row">
                         <table class="table table-bordered table-striped">
                             <thead>
-                                <tr>
-                                    <th>Name</th>
-                                </tr>
+                                <th>
+                                   <div class="row">
+                                            <div class="col-md-10">
+                                                Name
+                                            </div>
+                                            <div class="col-md-2 glyphicon glyphicon-triangle-{{sortDirection}} sortDirectionArrow" align="right" ng-click="sortDirection_OnClick()">
+                                            </div>
+                                    </div>
+                                </th>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="pet in Pages[currentPage].Items">

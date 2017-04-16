@@ -2,9 +2,21 @@
 .controller('OwnerDetailsController', ['$scope', '$http', function ($scope, $http) {
     var defaultItemsCountOnPage = 3;
     $scope.currentPage = 0;
+    $scope.sortDirection = 'top';
 
     $scope.paginationItem_OnClick = function (pageNumber) {
         $scope.currentPage = pageNumber - 1;
+    };
+
+    $scope.sortDirection_OnClick = function() {
+        if ($scope.sortDirection == 'top') {
+            $scope.sortDirection = 'bottom';
+        } 
+        else {
+            $scope.sortDirection = 'top';
+        }
+
+        sortPets($scope.sortDirection);
     };
 
     $scope.petCreate_OnClick = function(petName) {
@@ -31,6 +43,21 @@
          .then(function(response) {
             getOwnerDetails();
         });
+    }
+
+    var sortPets = function(sortDirection) {
+        var sortCoef = 1;
+        if (sortDirection == 'bottom') {
+            sortCoef = -1;
+        }
+
+        $scope.OwnerDetails.Pets.sort(function(a, b){
+            if(a.PetName < b.PetName) return -1*sortCoef;
+            if(a.PetName > b.PetName) return sortCoef;
+            return 0;
+        });
+
+        $scope.Pages = splitPetsListToPages($scope.OwnerDetails.Pets);
     }
 
     var getOwnerDetails = function () {
