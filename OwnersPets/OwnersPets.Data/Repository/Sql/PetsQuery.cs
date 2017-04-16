@@ -18,10 +18,7 @@
                     ORDER BY RowId DESC
                 ";
 
-        public const string DeletePetCommand = @"
-                    DELETE FROM Pet WHERE RowId = {0};
-                    DELETE FROM Owner WHERE OwnerId = {0};
-                ";
+        public const string DeletePetCommand = "DELETE FROM Pet WHERE RowId = {0}";
 
         public const string CreatePetCommand = "INSERT INTO Pet (Name, OwnerId) VALUES ('{0}', {1})";
     }

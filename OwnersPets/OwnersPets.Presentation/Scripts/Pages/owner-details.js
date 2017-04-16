@@ -10,7 +10,7 @@
     $scope.petCreate_OnClick = function(petName) {
         if (petName == "" || petName == undefined)
             return;
-        
+
         var requestBody = {
             ownerId : ownerId,
             petName : petName
@@ -40,6 +40,10 @@
         }).then(function (response) {
             return response.data;
         }).then(function (response) {
+            if (response == null) {
+                window.location = '../../Default/NotFoundError';
+            }
+
             $scope.OwnerDetails = response;
             $scope.Pages = splitPetsListToPages(response.Pets);
         });

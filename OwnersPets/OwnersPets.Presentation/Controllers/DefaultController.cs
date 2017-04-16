@@ -8,5 +8,10 @@ namespace OwnersPets.Presentation.Controllers
         {
             return View();
         }
+
+        public ActionResult NotFoundError()
+        {
+            return View();
+        }
     }
 }
