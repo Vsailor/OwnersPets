@@ -35,5 +35,23 @@ namespace OwnersPets.Data.Repository
 
             return result.FirstOrDefault();
         }
+
+        public async Task DeleteOwner(int ownerId)
+        {
+            using (var cnn = SimpleConnectionAdapter.SimpleDbConnection())
+            {
+                cnn.Open();
+                await cnn.ExecuteAsync(string.Format(OwnersQuery.DeleteOwnerCommand, ownerId));
+            }
+        }
+
+        public async Task CreateOwner(string ownerName)
+        {
+            using (var cnn = SimpleConnectionAdapter.SimpleDbConnection())
+            {
+                cnn.Open();
+                await cnn.ExecuteAsync(string.Format(OwnersQuery.CreateOwnerCommand, ownerName));
+            }
+        }
     }
 }

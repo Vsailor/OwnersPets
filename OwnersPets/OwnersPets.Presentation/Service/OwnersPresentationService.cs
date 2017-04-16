@@ -43,8 +43,8 @@ namespace OwnersPets.Presentation.Service
         /// <returns>Task</returns>
         public async Task DeleteOwner(DeleteOwnerRequest request)
         {
-            bool ownerExists = await _ownersService.IsOwnerExists(request.OwnerId);
-            if (!ownerExists)
+            OwnerDetailedInfo ownerExists = await _ownersService.GetOwnerDetails(request.OwnerId);
+            if (ownerExists == null)
             {
                 throw new HttpException((int)HttpStatusCode.BadRequest, "Owner not found");
             }
@@ -54,12 +54,6 @@ namespace OwnersPets.Presentation.Service
 
         public async Task CreateOwner(CreateOwnerRequest request)
         {
-            bool ownerExists = await _ownersService.IsOwnerExists(request.OwnerName);
-            if (ownerExists)
-            {
-                throw new HttpException((int)HttpStatusCode.BadRequest, "Owner with the same name already exists");
-            }
-
             await _ownersService.CreateOwner(request.OwnerName);
         }
     }

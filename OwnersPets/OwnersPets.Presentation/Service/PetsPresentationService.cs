@@ -22,13 +22,6 @@ namespace OwnersPets.Presentation.Service
         /// <returns>Task</returns>
         public async Task DeletePet(DeletePetRequest request)
         {
-            bool petExists = await _petsService.IsPetExists(request.PetId);
-
-            if (!petExists)
-            {
-                throw new HttpException((int)HttpStatusCode.BadRequest, "Pet not found");
-            }
-
             await _petsService.DeletePet(request.PetId);
         }
 
@@ -39,12 +32,6 @@ namespace OwnersPets.Presentation.Service
         /// <returns>Task</returns>
         public async Task CreatePet(CreatePetRequest request)
         {
-            bool petExists = await _petsService.VerifyOwnerHasThisPet(request.PetName, request.OwnerId);
-            if (petExists)
-            {
-                throw new HttpException((int)HttpStatusCode.BadRequest, "This pet already exists");
-            }
-
             await _petsService.CreatePet(request.PetName, request.OwnerId);
         }
     }

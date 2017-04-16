@@ -2,7 +2,7 @@
 {
     public class GetPetByPetIdResult
     {
-        public int PetId { get; set; }
+        public int RowId { get; set; }
 
         public string Name { get; set; }
 

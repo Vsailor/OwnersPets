@@ -2,30 +2,27 @@
 {
     internal class OwnersQuery
     {
-        public static string GetAllOwnersBasicInfoCommand
-        {
-            get
-            {
-                return @"
-                   SELECT [Owner].OwnerId AS OwnerId, 
-	                      [Owner].Name AS Name, 
-	                      (SELECT COUNT(*) FROM Pet WHERE Pet.OwnerId = [Owner].OwnerId) AS PetsCount 
-                   FROM [Owner]
+        public const string GetAllOwnersBasicInfoCommand = @"
+                   SELECT Owner.RowId AS OwnerId, 
+	                      Owner.Name AS Name, 
+	                      (SELECT COUNT(*) FROM Pet WHERE Pet.OwnerId = Owner.RowId) AS PetsCount 
+                   FROM Owner
+                   ORDER BY Owner.RowId DESC
                 ";
-            }
-        }
 
-        public static string GetOwnerByOwnerIdCommand
-        {
-            get
-            {
-                return @"
-                    SELECT OwnerId, 
+        public const string GetOwnerByOwnerIdCommand = @"
+                    SELECT RowId, 
                            Name 
                     FROM Owner 
-                    WHERE OwnerId = {0}
+                    WHERE RowId = {0}
                 ";
-            }
-        }
+
+        public const string DeleteOwnerCommand = @"
+                    DELETE FROM Owner WHERE RowId = {0};
+                    DELETE FROM Pet WHERE OwnerId = {0};
+                ";
+
+
+        public const string CreateOwnerCommand = "INSERT INTO Owner (NAME) VALUES ('{0}')";
     }
 }

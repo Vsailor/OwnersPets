@@ -7,18 +7,15 @@
             get
             {
                 return @"
-                CREATE TABLE [Owner]
+                CREATE TABLE Owner
                 (
-                    OwnerId     INTEGER IDENTITY PRIMARY KEY,
                     Name        VARCHAR(100) NOT NULL
                 );
 
-
                 CREATE TABLE Pet
                 (
-                    PetId       INTEGER IDENTITY PRIMARY KEY,
                     Name        VARCHAR(100) NOT NULL,
-                    OwnerId     REFERENCES [Owner](OwnerId) ON DELETE CASCADE
+                    OwnerId     REFERENCES Owner(RowId) ON DELETE CASCADE
                 );";
             }
         }
@@ -28,89 +25,43 @@
             get
             {
                 return @"
-                    INSERT INTO [Owner] (OwnerId, Name)
-                    VALUES (0, 'Bob');
-
-                    INSERT INTO [Owner] (OwnerId, Name)
-                    VALUES (1, 'Simpson');
-
-                    INSERT INTO [Owner] (OwnerId, Name)
-                    VALUES (2, 'Michael');
-
-                    INSERT INTO [Owner] (OwnerId, Name)
-                    VALUES (3, 'Thomas');
-
-                    INSERT INTO [Owner] (OwnerId, Name)
-                    VALUES (4, 'Martin');
-
-                    INSERT INTO [Owner] (OwnerId, Name)
-                    VALUES (5, 'Diana');
-
-                    INSERT INTO [Owner] (OwnerId, Name)
-                    VALUES (6, 'Lili');
-
-                    INSERT INTO [Owner] (OwnerId, Name)
-                    VALUES (7, 'Chris');
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (0, 'Snowball', 0);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (1, 'Pet', 0);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (2, 'Bulf', 0);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (3, 'Rock', 0);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (4, 'Luna', 1);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (5, 'Han', 1);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (6, 'Wolf', 1);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (7, 'Doll', 1);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (8, 'Lap', 2);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (9, 'Stone', 2);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (10, 'Rap', 2);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (11, 'Crud', 2);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (12, 'Tom', 3);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (13, 'West', 3);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (14, 'Hit', 3);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (15, 'Stack', 3);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (16, 'Bim', 4);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (17, 'Rex', 4);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (18, 'Snake', 4);
-
-                    INSERT INTO [Pet] (PetId, Name, OwnerId)
-                    VALUES (19, 'June', 4);
+                    INSERT INTO Owner (Name) VALUES ('Bob');
+                    INSERT INTO Owner (Name) VALUES ('Simpson');
+                    INSERT INTO Owner (Name) VALUES ('Michael');
+                    INSERT INTO Owner (Name) VALUES ('Thomas');
+                    INSERT INTO Owner (Name) VALUES ('Martin');
+                    INSERT INTO Owner (Name) VALUES ('Diana');
+                    INSERT INTO Owner (Name) VALUES ('Lili');
+                    INSERT INTO Owner (Name) VALUES ('Chris');
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Snowball', 1);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Pet', 1);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Bulf', 1);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Rock', 1);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Luna', 2);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Han', 2);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Wolf', 2);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Doll', 2);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Lap', 3);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Stone', 3);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Rap', 3);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Crud', 3);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Tom', 4);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('West', 4);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Hit', 4);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Stack', 4);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Bim', 5);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Rex', 5);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Snake', 5);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('June', 5);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Loop', 6);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Rick', 6);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Roy', 6);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Sam', 6);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Roof', 7);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Temp', 7);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Rock', 7);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Rex', 8);
+                    INSERT INTO Pet (Name, OwnerId) VALUES ('Dog', 8);
                 ";
             }
         }

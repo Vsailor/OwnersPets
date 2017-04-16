@@ -47,9 +47,10 @@ namespace StorageModel.Data
 
         public static void Main(string[] args)
         {
+            CreateIfNotExistsDatabase();
             while (true)
             {
-                string qu = @"SELECT * FROM [Owner]";
+                string qu = @"SELECT RowId, Name, OwnerId FROM Pet";
                 using (SQLiteConnection conn = SimpleDbConnection())
                 {
                     conn.Open();

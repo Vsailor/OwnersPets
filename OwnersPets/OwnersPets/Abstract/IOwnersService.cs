@@ -11,10 +11,6 @@ namespace OwnersPets.Abstract
 
         Task DeleteOwner(int ownerId);
 
-        Task<bool> IsOwnerExists(int ownerId);
-
-        Task<bool> IsOwnerExists(string ownerId);
-
         Task CreateOwner(string ownerName);
     }
 }

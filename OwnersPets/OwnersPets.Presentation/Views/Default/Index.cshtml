@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-3">
-                    <input type="text" class="form-control" id="owner_name_input" placeholder="Enter Pet Owner's Name" ng-model="petNameModel"/>
+                    <input type="text" class="form-control" id="owner_name_input" placeholder="Enter Pet Owner's Name" ng-model="petNameModel" ng-minlength="1" required="true"/>
                 </div>
                 <div class="col-md-1">
                     <button type="button" class="btn btn-primary" ng-click="ownerCreate_OnClick(petNameModel)">Add</button>

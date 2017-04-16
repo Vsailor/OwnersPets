@@ -19,6 +19,11 @@ namespace OwnersPets.Presentation.ApiControllers
         [Route("Delete")]
         public async Task DeletePet([FromBody] DeletePetRequest request)
         {
+            if (request == null)
+            {
+                return;
+            }
+
             await _petsPresentationService.DeletePet(request);
         }
 
@@ -26,6 +31,11 @@ namespace OwnersPets.Presentation.ApiControllers
         [Route("Create")]
         public async Task CreatePet([FromBody] CreatePetRequest request)
         {
+            if (string.IsNullOrEmpty(request?.PetName))
+            {
+                return;
+            }
+
             await _petsPresentationService.CreatePet(request);
         }
     }

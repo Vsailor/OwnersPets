@@ -1,41 +1,26 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using OwnersPets.Abstract;
+using OwnersPets.Data.Abstract;
 
 namespace OwnersPets.Service
 {
     public class PetsService : IPetsService
     {
+        private readonly IPetsRepository _petsRepository;
+
+        public PetsService(IPetsRepository petsRepository)
+        {
+            _petsRepository = petsRepository;
+        }
+
         public async Task DeletePet(int petId)
         {
-            await Task.Run(() =>
-            {
-
-            });
-        }
-
-        public async Task<bool> IsPetExists(int petId)
-        {
-            return await Task.Run(() =>
-            {
-                return false;
-            });
-        }
-
-        public async Task<bool> VerifyOwnerHasThisPet(string petName, int ownerId)
-        {
-            return await Task.Run(() =>
-            {
-                return false;
-            });
+            await _petsRepository.DeletePet(petId);
         }
 
         public async Task CreatePet(string petName, int ownerId)
         {
-            await Task.Run(() =>
-            {
-
-            });
+            await _petsRepository.CreatePet(petName, ownerId);
         }
     }
 }

@@ -36,5 +36,23 @@ namespace OwnersPets.Data.Repository
 
             return result.ToArray();
         }
+
+        public async Task DeletePet(int petId)
+        {
+            using (var cnn = SimpleConnectionAdapter.SimpleDbConnection())
+            {
+                cnn.Open();
+                await cnn.ExecuteAsync(string.Format(PetsQuery.DeletePetCommand, petId));
+            }
+        }
+
+        public async Task CreatePet(string petName, int ownerId)
+        {
+            using (var cnn = SimpleConnectionAdapter.SimpleDbConnection())
+            {
+                cnn.Open();
+                await cnn.ExecuteAsync(string.Format(PetsQuery.CreatePetCommand, petName, ownerId));
+            }
+        }
     }
 }

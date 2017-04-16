@@ -36,12 +36,22 @@ namespace OwnersPets.Presentation.ApiControllers
         [Route("Delete")]
         public async Task DeleteOwner([FromBody] DeleteOwnerRequest request)
         {
+            if (request == null)
+            {
+                return;
+            }
+
             await _ownersPresentationService.DeleteOwner(request);
         }
 
         [Route("Create")]
         public async Task CreateOwner([FromBody] CreateOwnerRequest request)
         {
+            if (string.IsNullOrEmpty(request?.OwnerName))
+            {
+                return;
+            }
+
             await _ownersPresentationService.CreateOwner(request);
         }
     }

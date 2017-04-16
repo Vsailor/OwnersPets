@@ -38,18 +38,18 @@ namespace OwnersPets.Service
             GetOwnerByOwnerIdResult owner = await _ownersRepository.GetOwnerDetailedInfo(ownerId);
             if (owner == null)
             {
-                throw new ArgumentException($"Owner <{ownerId}> not found");
+                return null;
             }
 
             GetPetsByOwnerIdResult[] pets = await _petsRepository.GetPetsByOwnerId(ownerId);
             return new OwnerDetailedInfo
             {
-                OwnerId = owner.OwnerId,
+                OwnerId = owner.RowId,
                 OwnerName = owner.Name,
                 Pets = pets.Select(p => 
                             new PetBasicInfo
                             {
-                                PetId = p.PetId,
+                                PetId = p.RowId,
                                 PetName = p.Name
                             })
             };
@@ -57,34 +57,12 @@ namespace OwnersPets.Service
 
         public async Task DeleteOwner(int ownerId)
         {
-            await Task.Run(() =>
-            {
-                
-            });
-        }
-
-        public async Task<bool> IsOwnerExists(int ownerId)
-        {
-            return await Task.Run(() =>
-            {
-                return true;
-            });
-        }
-
-        public async Task<bool> IsOwnerExists(string ownerName)
-        {
-            return await Task.Run(() =>
-            {
-                return false;
-            });
+            await _ownersRepository.DeleteOwner(ownerId);
         }
 
         public async Task CreateOwner(string ownerName)
         {
-            await Task.Run(() =>
-            {
-
-            });
+            await _ownersRepository.CreateOwner(ownerName);
         }
     }
 }

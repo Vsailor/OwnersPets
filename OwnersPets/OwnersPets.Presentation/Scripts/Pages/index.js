@@ -19,6 +19,9 @@
     }
 
     $scope.ownerCreate_OnClick = function(ownerName) {
+        if (ownerName == "" || ownerName == undefined)
+            return;
+
         var requestBody = {
             ownerName : ownerName
         };

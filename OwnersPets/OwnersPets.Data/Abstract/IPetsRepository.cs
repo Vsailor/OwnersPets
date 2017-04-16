@@ -8,5 +8,9 @@ namespace OwnersPets.Data.Abstract
         Task<GetPetByPetIdResult> GetPetDetailedInfo(int petId);
 
         Task<GetPetsByOwnerIdResult[]> GetPetsByOwnerId(int ownerId);
+
+        Task DeletePet(int petId);
+
+        Task CreatePet(string petName, int ownerId);
     }
 }

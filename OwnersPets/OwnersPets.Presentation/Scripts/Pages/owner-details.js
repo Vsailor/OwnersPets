@@ -8,6 +8,9 @@
     };
 
     $scope.petCreate_OnClick = function(petName) {
+        if (petName == "" || petName == undefined)
+            return;
+        
         var requestBody = {
             ownerId : ownerId,
             petName : petName

@@ -8,5 +8,9 @@ namespace OwnersPets.Data.Abstract
         Task<GetAllOwnerBasicInfoResult[]> GetAllOwnersBasicInfo();
 
         Task<GetOwnerByOwnerIdResult> GetOwnerDetailedInfo(int ownerId);
+
+        Task DeleteOwner(int ownerId);
+
+        Task CreateOwner(string ownerName);
     }
 }
