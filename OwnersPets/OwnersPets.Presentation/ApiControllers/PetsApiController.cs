@@ -31,7 +31,7 @@ namespace OwnersPets.Presentation.ApiControllers
         [Route("Create")]
         public async Task CreatePet([FromBody] CreatePetRequest request)
         {
-            if (string.IsNullOrEmpty(request?.PetName))
+            if (string.IsNullOrEmpty(request?.PetName) || !ModelState.IsValid)
             {
                 return;
             }

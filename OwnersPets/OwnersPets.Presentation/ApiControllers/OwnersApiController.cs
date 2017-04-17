@@ -47,7 +47,7 @@ namespace OwnersPets.Presentation.ApiControllers
         [Route("Create")]
         public async Task CreateOwner([FromBody] CreateOwnerRequest request)
         {
-            if (string.IsNullOrEmpty(request?.OwnerName))
+            if (string.IsNullOrEmpty(request?.OwnerName) || !ModelState.IsValid)
             {
                 return;
             }
