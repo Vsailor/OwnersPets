@@ -17,30 +17,16 @@ namespace OwnersPets.Presentation.Service
             _ownersService = ownersService;
         }
 
-        /// <summary>
-        /// Gets all owners
-        /// </summary>
-        /// <returns>Basic info for all owners</returns>
         public async Task<OwnerBasicInfo[]> GetAllOwners()
         {
             return await _ownersService.GetAllOwnersBasicInfo();
         }
 
-        /// <summary>
-        /// Gets owner detailed information by ownerId
-        /// </summary>
-        /// <param name="id">Id of owner</param>
-        /// <returns>Owner detailed information</returns>
         public async Task<OwnerDetailedInfo> GetOwnerDetailsById(int id)
         {
             return await _ownersService.GetOwnerDetails(id);
         }
 
-        /// <summary>
-        /// Deletes owner by ownerId
-        /// </summary>
-        /// <param name="ownerId">Id of owner</param>
-        /// <returns>Task</returns>
         public async Task DeleteOwner(DeleteOwnerRequest request)
         {
             OwnerDetailedInfo ownerExists = await _ownersService.GetOwnerDetails(request.OwnerId);

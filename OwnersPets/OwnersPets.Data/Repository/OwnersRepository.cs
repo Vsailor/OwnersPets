@@ -17,7 +17,8 @@ namespace OwnersPets.Data.Repository
             using (var cnn = SimpleConnectionAdapter.SimpleDbConnection())
             {
                 cnn.Open();
-                result = await cnn.QueryAsync<GetAllOwnerBasicInfoResult>(OwnersQuery.GetAllOwnersBasicInfoCommand);
+                result = await cnn.QueryAsync<GetAllOwnerBasicInfoResult>(
+                            OwnersQuery.GetAllOwnersBasicInfoCommand);
             }
 
             return result.ToArray();

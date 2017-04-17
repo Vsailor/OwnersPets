@@ -197,7 +197,6 @@
   <ItemGroup>
     <Compile Include="ApiControllers\PetsApiController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="ApiControllers\OwnersApiController.cs" />
